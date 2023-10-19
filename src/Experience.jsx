@@ -1,132 +1,105 @@
-import { useEffect, useLayoutEffect } from "react";
-import { useThree } from "@react-three/fiber";
-
-import { ContactShadows } from "@react-three/drei";
-import Tv from "./components/room/Tv";
-import Man from "./components/human/Man";
-import Woman from "./components/human/Woman";
-import gsap from "gsap";
-import Room from "./components/room/Room";
-import Floors from "./components/room/Floors";
-import Walls from "./components/room/Walls";
-import Curtain from "./components/room/Curtain";
-import WindowBody from "./components/room/WindowBody";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { Fragment } from "react";
 import K012 from "./components/sofa/K012";
+import styled from "styled-components";
 
 export default function Experience(props) {
-  let camera = useThree((state) => state.camera);
+  const Section = styled.section`
+    position: relative;
+    padding: 100px;
+    width: 100vw;
+    height: 100vh;
+    background-color: #d0d4ca;
+  `;
 
-  useLayoutEffect(() => {
-    let fov = camera.fov;
+  const Title = styled.h1`
+    margin-bottom: 50px;
+    width: 100%;
+    background-color: yellow;
+    font-size: 30px;
+  `;
 
-    camera.fov = fov;
-    camera.updateProjectionMatrix();
+  const Main = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border: 1px solid #000;
+  `;
 
-    let mm = gsap.matchMedia();
-    mm.add(
-      {
-        // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
-        isDesktop: `(min-width: 735px)`,
-        isMobile: `(max-width: 735px)`,
-      },
-      (context) => {
-        let { isDesktop, isMobile } = context.conditions;
+  const LeftBody = styled.div`
+    padding: 20px 20px;
+    width: 50%;
+    background-color: #daddb1;
+  `;
 
-        if (isMobile) {
-          camera.fov = 50;
-          camera.updateProjectionMatrix();
-        } else {
-          camera.fov = 35;
-          camera.updateProjectionMatrix();
-        }
-      }
-    );
-  }, []);
+  const RightBody = styled.div`
+    width: 50%;
+    background-color: #b6fffa;
+  `;
 
-  useEffect(() => {
-    props.setLoading(false);
-  });
+  const CanvasWrapper = styled.div`
+    margin-bottom: 50px;
+    width: 100%;
+    height: 500px;
+    background-color: pink;
+    border: 1px solid blue;
+  `;
 
-  // screenshot
-  const gl = useThree((state) => state.gl);
-
-  useEffect(() => {
-    if (props.isShot) {
-      const link = document.createElement("a");
-      link.setAttribute("download", "screenshot.png");
-      link.setAttribute(
-        "href",
-        gl.domElement
-          .toDataURL("image/png")
-          .replace("image/png", "image/octet-stream")
-      );
-      link.click();
-      props.setIsShot(false);
-    }
-  }, [props.isShot]);
+  const Information = styled.div`
+    width: 100%;
+    background-color: #bfb29e;
+    text-align: center;
+  `;
 
   return (
-    <>
-      {/* background */}
-      <color attach="background" args={["#dfdfdf"]} />
-
-      {/* light */}
-      <pointLight position={[4, 3, 2]} intensity={0.2} />
-
-      {/* Sofa */}
-      <K012
-        position={[2.5, -1, 0.9]}
-        rotation-y={-Math.PI / 2}
-        scale={2.5}
-        normalColor={props.normalColor}
-      />
-
-      {/* Room */}
-      {props.scenes === "room" && (
-        <>
-          <ContactShadows
-            position={[0, -0.98, -0.1]}
-            opacity={0.25}
-            scale={12}
-            blur={2}
-            far={10}
-          />
-          <Room position={[0, -2.14, 0]} scale={0.5} />
-          <WindowBody position={[0, -2.14, 0]} scale={0.5} />
-          <Curtain position={[0, -2.14, 0]} scale={0.5} />
-
-          <Floors
-            position={[0, -2.14, 0]}
-            scale={0.5}
-            floorTexture={props.floorTexture}
-          />
-
-          <Walls
-            position={[0, -2.14, 0]}
-            scale={0.5}
-            wallTexture={props.wallTexture}
-          />
-
-          <Tv />
-        </>
-      )}
-
-      {/* human */}
-      {props.human && (
-        <>
-          <ambientLight intensity={0.3} />
-          <Woman
-            scale={2.1}
-            position={[0.9, -1.1, -1.35]}
-            rotation={[-0.2, -0.4, 0]}
-          />
-          <Man
-            scale={2.2}
-            position={[3.7, -1, 2]}
-            rotation={[0, -Math.PI / 2, 0]}
-          />
-        </>
-      )}
-    </>
+    <Fragment>
+      <Section>
+        <Title>カラーシミュレーション</Title>
+        <Main>
+          <LeftBody>
+            <CanvasWrapper>
+              <Canvas
+                gl={{ preserveDrawingBuffer: true }}
+                shadows
+                dpr={[1, 2]}
+                camera={{
+                  position: [0, 0, 10],
+                  fov: 50,
+                  near: 1,
+                  far: 20,
+                }}
+              >
+                {/* <PerspectiveCamera makeDefault position={[0, 0, 0]} /> */}
+                {/* background */}
+                <color attach="background" args={["#dfdfdf"]} />
+                {/* light */}
+                <pointLight position={[4, 3, 2]} intensity={0.5} />
+                <OrbitControls
+                  makeDefault
+                  enableZoom={false}
+                  // enablePan
+                  target={[0, 0, 0]}
+                  // maxDistance={20}
+                  // minDistance={0.1}
+                  // minPolarAngle={Math.PI / 2.5}
+                  minPolarAngle={Math.PI / 2}
+                  maxPolarAngle={Math.PI / 2}
+                  // maxAzimuthAngle={Math.PI / 1.7}
+                  // minAzimuthAngle={-Math.PI / 10}
+                />
+                <K012
+                  position={[0.2, -1, 0]}
+                  scale={2.5}
+                  rotation={[0, 0, 0]}
+                />
+              </Canvas>
+            </CanvasWrapper>
+            <Information>ここにカラー情報</Information>
+          </LeftBody>
+          <RightBody />
+        </Main>
+      </Section>
+    </Fragment>
   );
 }
