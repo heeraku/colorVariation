@@ -1,0 +1,36 @@
+{
+  "name": "armonia-k012",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "deploy": "vercel --prod"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "3.0",
+    "vercel": "^28.10.1",
+    "vite": "^4.2.1"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-regular-svg-icons": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@react-three/drei": "^9.50.3",
+    "@react-three/fiber": "^8.9.2",
+    "@react-three/postprocessing": "^2.7.0",
+    "@react-three/rapier": "^0.9.0",
+    "gsap": "^3.12.1",
+    "html2canvas": "^1.4.1",
+    "leva": "^0.9.34",
+    "r3f-perf": "^6.6.3",
+    "react": "18.2",
+    "react-dom": "18.2",
+    "react-spinners": "^0.13.8",
+    "styled-components": "^6.0.0-rc.1",
+    "three": "^0.148.0",
+    "vercel": "^28.17.0"
+  }
+}
