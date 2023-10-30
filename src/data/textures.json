@@ -1,0 +1,308 @@
+[
+  {
+    "id": 0,
+    "url": "/textures/01_be.jpg",
+    "label": "ベージュ",
+    "thumbnail": "#FFF0CE"
+  },
+  {
+    "id": 1,
+    "url": "/textures/02_bg.jpg",
+    "label": "ベージュ２",
+    "thumbnail": "#89CFF3"
+  },
+  {
+    "id": 2,
+    "url": "/textures/03_br.jpg",
+    "label": "ブラウン",
+    "thumbnail": "#6C5F5B"
+  },
+  {
+    "id": 3,
+    "url": "/textures/04_bk.jpg",
+    "label": "ブラック",
+    "thumbnail": "#000"
+  },
+  {
+    "id": 4,
+    "url": "/textures/05_gy.jpg",
+    "label": "グレー",
+    "thumbnail": "#D0D4CA"
+  },
+  {
+    "id": 5,
+    "url": "/textures/06_lg.jpg",
+    "label": "ライラック",
+    "thumbnail": "#D6C7AE"
+  },
+  {
+    "id": 6,
+    "url": "/textures/07_na.jpg",
+    "label": "ネービー",
+    "thumbnail": "#1F4172"
+  },
+  {
+    "id": 7,
+    "url": "/textures/08_sb.jpg",
+    "label": "sb",
+    "thumbnail": "#EEEEEE"
+  },
+  {
+    "id": 8,
+    "url": "/textures/09_wh.jpg",
+    "label": "ホワイト",
+    "thumbnail": "#fff"
+  },
+  {
+    "id": 9,
+    "url": "/textures/10_wr.jpg",
+    "label": "ワインレッド",
+    "thumbnail": "#D83F31"
+  },
+  {
+    "id": 10,
+    "url": "/textures/01_be.jpg",
+    "label": "ベージュ",
+    "thumbnail": "#FFF0CE"
+  },
+  {
+    "id": 11,
+    "url": "/textures/02_bg.jpg",
+    "label": "ベージュ２",
+    "thumbnail": "#89CFF3"
+  },
+  {
+    "id": 12,
+    "url": "/textures/03_br.jpg",
+    "label": "ブラウン",
+    "thumbnail": "#6C5F5B"
+  },
+  {
+    "id": 13,
+    "url": "/textures/04_bk.jpg",
+    "label": "ブラック",
+    "thumbnail": "#000"
+  },
+  {
+    "id": 14,
+    "url": "/textures/05_gy.jpg",
+    "label": "グレー",
+    "thumbnail": "#D0D4CA"
+  },
+  {
+    "id": 15,
+    "url": "/textures/06_lg.jpg",
+    "label": "ライラック",
+    "thumbnail": "#D6C7AE"
+  },
+  {
+    "id": 16,
+    "url": "/textures/07_na.jpg",
+    "label": "ネービー",
+    "thumbnail": "#1F4172"
+  },
+  {
+    "id": 17,
+    "url": "/textures/08_sb.jpg",
+    "label": "sb",
+    "thumbnail": "#EEEEEE"
+  },
+  {
+    "id": 18,
+    "url": "/textures/09_wh.jpg",
+    "label": "ホワイト",
+    "thumbnail": "#fff"
+  },
+  {
+    "id": 19,
+    "url": "/textures/10_wr.jpg",
+    "label": "ワインレッド",
+    "thumbnail": "#D83F31"
+  },
+  {
+    "id": 20,
+    "url": "/textures/10_wr.jpg",
+    "label": "ワインレッド",
+    "thumbnail": "#D83F31"
+  },
+  {
+    "id": 21,
+    "url": "/textures/02_bg.jpg",
+    "label": "ベージュ２",
+    "thumbnail": "#89CFF3"
+  },
+  {
+    "id": 22,
+    "url": "/textures/03_br.jpg",
+    "label": "ブラウン",
+    "thumbnail": "#6C5F5B"
+  },
+  {
+    "id": 23,
+    "url": "/textures/04_bk.jpg",
+    "label": "ブラック",
+    "thumbnail": "#000"
+  },
+  {
+    "id": 24,
+    "url": "/textures/05_gy.jpg",
+    "label": "グレー",
+    "thumbnail": "#D0D4CA"
+  },
+  {
+    "id": 25,
+    "url": "/textures/06_lg.jpg",
+    "label": "ライラック",
+    "thumbnail": "#D6C7AE"
+  },
+  {
+    "id": 26,
+    "url": "/textures/07_na.jpg",
+    "label": "ネービー",
+    "thumbnail": "#1F4172"
+  },
+  {
+    "id": 27,
+    "url": "/textures/08_sb.jpg",
+    "label": "sb",
+    "thumbnail": "#EEEEEE"
+  },
+  {
+    "id": 28,
+    "url": "/textures/09_wh.jpg",
+    "label": "ホワイト",
+    "thumbnail": "#fff"
+  },
+  {
+    "id": 29,
+    "url": "/textures/10_wr.jpg",
+    "label": "ワインレッド",
+    "thumbnail": "#D83F31"
+  },
+  {
+    "id": 30,
+    "url": "/textures/10_wr.jpg",
+    "label": "ワインレッド",
+    "thumbnail": "#D83F31"
+  },
+  {
+    "id": 31,
+    "url": "/textures/02_bg.jpg",
+    "label": "ベージュ２",
+    "thumbnail": "#89CFF3"
+  },
+  {
+    "id": 32,
+    "url": "/textures/03_br.jpg",
+    "label": "ブラウン",
+    "thumbnail": "#6C5F5B"
+  },
+  {
+    "id": 33,
+    "url": "/textures/04_bk.jpg",
+    "label": "ブラック",
+    "thumbnail": "#000"
+  },
+  {
+    "id": 34,
+    "url": "/textures/05_gy.jpg",
+    "label": "グレー",
+    "thumbnail": "#D0D4CA"
+  },
+  {
+    "id": 35,
+    "url": "/textures/06_lg.jpg",
+    "label": "ライラック",
+    "thumbnail": "#D6C7AE"
+  },
+  {
+    "id": 36,
+    "url": "/textures/07_na.jpg",
+    "label": "ネービー",
+    "thumbnail": "#1F4172"
+  },
+  {
+    "id": 37,
+    "url": "/textures/08_sb.jpg",
+    "label": "sb",
+    "thumbnail": "#EEEEEE"
+  },
+  {
+    "id": 38,
+    "url": "/textures/09_wh.jpg",
+    "label": "ホワイト",
+    "thumbnail": "#fff"
+  },
+  {
+    "id": 39,
+    "url": "/textures/10_wr.jpg",
+    "label": "ワインレッド",
+    "thumbnail": "#D83F31"
+  },
+  {
+    "id": 40,
+    "url": "/textures/10_wr.jpg",
+    "label": "ワインレッド",
+    "thumbnail": "#D83F31"
+  },
+  {
+    "id": 41,
+    "url": "/textures/02_bg.jpg",
+    "label": "ベージュ２",
+    "thumbnail": "#89CFF3"
+  },
+  {
+    "id": 42,
+    "url": "/textures/03_br.jpg",
+    "label": "ブラウン",
+    "thumbnail": "#6C5F5B"
+  },
+  {
+    "id": 43,
+    "url": "/textures/04_bk.jpg",
+    "label": "ブラック",
+    "thumbnail": "#000"
+  },
+  {
+    "id": 44,
+    "url": "/textures/05_gy.jpg",
+    "label": "グレー",
+    "thumbnail": "#D0D4CA"
+  },
+  {
+    "id": 45,
+    "url": "/textures/06_lg.jpg",
+    "label": "ライラック",
+    "thumbnail": "#D6C7AE"
+  },
+  {
+    "id": 46,
+    "url": "/textures/07_na.jpg",
+    "label": "ネービー",
+    "thumbnail": "#1F4172"
+  },
+  {
+    "id": 47,
+    "url": "/textures/08_sb.jpg",
+    "label": "sb",
+    "thumbnail": "#EEEEEE"
+  },
+  {
+    "id": 48,
+    "url": "/textures/09_wh.jpg",
+    "label": "ホワイト",
+    "thumbnail": "#fff"
+  },
+  {
+    "id": 49,
+    "url": "/textures/10_wr.jpg",
+    "label": "ワインレッド",
+    "thumbnail": "#D83F31"
+  },
+  {
+    "id": 50,
+    "url": "/textures/10_wr.jpg",
+    "label": "ワインレッド",
+    "thumbnail": "#D83F31"
+  }
+]
