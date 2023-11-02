@@ -3,11 +3,10 @@
 html,
 body,
 #root {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 body * {
@@ -164,4 +163,12 @@ body * {
 .spinner__logo__image {
   width: 100%;
   height: auto;
+}
+
+li#selectedModel {
+  border: 3px solid #000;
+}
+
+li#selected {
+  border: 3px solid #000;
 }
