@@ -10,20 +10,18 @@ export default function K012(props) {
     (texture) => texture.id === props.baseColor
   );
 
+  const baseColor = useTexture(selectedBaseColor.url);
+  baseColor.wrapS = baseColor.wrapT = THREE.RepeatWrapping;
+  baseColor.repeat.set(3, 3);
+
   const selectedCushionColor = texturesData.find(
     (texture) => texture.id === props.cushionColor
   );
 
-  const baseColor = useTexture(selectedBaseColor.url);
-  const cushionColor = useTexture(selectedCushionColor.url);
-
-  baseColor.wrapS = baseColor.wrapT = THREE.RepeatWrapping;
-  baseColor.repeat.set(3, 3);
+  const cushionColor = useTexture(selectedCushionColor?.url);
 
   cushionColor.wrapS = cushionColor.wrapT = THREE.RepeatWrapping;
   cushionColor.repeat.set(3, 3);
-
-  props.setLoading(false);
 
   return (
     <group {...props} dispose={null}>

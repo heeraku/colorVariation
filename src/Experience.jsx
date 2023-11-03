@@ -1,11 +1,11 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Text } from "@react-three/drei";
 import K012 from "./components/sofa/K012";
 import K029 from "./components/sofa/K029";
 import texturesData from "./data/textures.json";
 import styles from "./Experience.module.scss";
-import K012w from "./components/sofa/ K012w";
+import K012w from "./components/sofa/K012w";
 
 export default function Experience(props) {
   return (
@@ -45,18 +45,29 @@ export default function Experience(props) {
                 // maxAzimuthAngle={Math.PI / 1.7}
                 // minAzimuthAngle={-Math.PI / 10}
               />
-              <Suspense fallback={null}>
-                {props.sofaNo === "01" && (
-                  <K012
+
+              <Suspense
+                fallback={
+                  <K012w
                     position={[0.2, -1, 0]}
                     scale={2.5}
                     rotation={[0, 0, 0]}
-                    baseColor={props.baseColor}
-                    cushionColor={props.cushionColor}
-                    loading={props.loading}
-                    setLoading={props.setLoading}
                   />
+                }
+              >
+                {props.sofaNo === "01" && (
+                  <>
+                    <K012
+                      position={[0.2, -1, 0]}
+                      scale={2.5}
+                      rotation={[0, 0, 0]}
+                      baseColor={props.baseColor}
+                      cushionColor={props.cushionColor}
+                    />
+                  </>
                 )}
+              </Suspense>
+              <Suspense fallback={null}>
                 {props.sofaNo === "02" && (
                   <K029
                     position={[-0.5, -1, 0]}
@@ -66,15 +77,6 @@ export default function Experience(props) {
                     cushionColor={props.cushionColor}
                   />
                 )}
-
-                <Text position={[0, 0, 0]} fontSize={1} color="red">
-                  Loading
-                </Text>
-                <K012w
-                  position={[0.2, -1, 0]}
-                  scale={2.5}
-                  rotation={[0, 0, 0]}
-                />
               </Suspense>
             </Canvas>
           </div>
@@ -159,7 +161,6 @@ export default function Experience(props) {
                   id={props.baseColor === li.id ? "selected" : ""}
                   onClick={() => {
                     props.setBaseColor(li.id);
-                    props.setLoading(true);
                   }}
                   style={{
                     backgroundColor: `${li.thumbnail}`,
