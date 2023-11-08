@@ -3,6 +3,7 @@ import ColorTabs from "./ColorTabs";
 import styles from "./Colors.module.scss";
 import ColorItems from "./ColorItems";
 import texturesData from "../../data/textures.json";
+import { motion } from "framer-motion";
 
 export default function Colors({
   baseColor,
@@ -22,7 +23,7 @@ export default function Colors({
       <ColorTabs onSelectType={handleSelectType} selectedType={selectedType}>
         <section className={styles.colorSection}>
           {selectedType === "base" ? (
-            <>
+            <motion.div>
               <h3 className={styles.selectedItem}>
                 選択中のカラー：
                 {texturesData.map((data) => {
@@ -32,7 +33,7 @@ export default function Colors({
                 })}
               </h3>
               <ColorItems baseColor={baseColor} setBaseColor={setBaseColor} />
-            </>
+            </motion.div>
           ) : sofaNo !== "03" ? (
             <>
               <h3 className={styles.selectedItem}>
