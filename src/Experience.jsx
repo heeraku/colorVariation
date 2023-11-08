@@ -33,8 +33,8 @@ export default function Experience(props) {
               {/* light */}
               <pointLight position={[4, 3, 2]} intensity={0.5} />
               <directionalLight position={[-2, 5, 0]} intensity={0.5} />
-              <directionalLight position={[0, 2, -3]} intensity={0.5} />
-              <directionalLight position={[5, 2, 3]} intensity={0.5} />
+              <directionalLight position={[0, 2, -3]} intensity={0.8} />
+              <directionalLight position={[5, 2, 3]} intensity={0.8} />
               <OrbitControls
                 makeDefault
                 enableZoom={true}
