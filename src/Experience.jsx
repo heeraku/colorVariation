@@ -6,6 +6,8 @@ import K029 from "./components/sofa/K029";
 import texturesData from "./data/textures.json";
 import styles from "./Experience.module.scss";
 import K012w from "./components/sofa/K012w";
+import { K087 } from "./components/sofa/K087";
+import Colors from "./components/UI/Colors";
 
 export default function Experience(props) {
   return (
@@ -31,7 +33,8 @@ export default function Experience(props) {
               {/* light */}
               <pointLight position={[4, 3, 2]} intensity={0.5} />
               <directionalLight position={[-2, 5, 0]} intensity={0.5} />
-              <directionalLight position={[0, 0, -3]} intensity={2} />
+              <directionalLight position={[0, 2, -3]} intensity={0.5} />
+              <directionalLight position={[5, 2, 3]} intensity={0.5} />
               <OrbitControls
                 makeDefault
                 enableZoom={true}
@@ -78,6 +81,17 @@ export default function Experience(props) {
                   />
                 )}
               </Suspense>
+              <Suspense fallback={null}>
+                {props.sofaNo === "03" && (
+                  <K087
+                    position={[0, -1, 0]}
+                    scale={2.5}
+                    rotation={[0, 0, 0]}
+                    baseColor={props.baseColor}
+                    cushionColor={props.cushionColor}
+                  />
+                )}
+              </Suspense>
             </Canvas>
           </div>
           <div className={styles.information}>
@@ -99,6 +113,9 @@ export default function Experience(props) {
               })}
             </p>
           </div>
+          <div className={styles.exportSection}>
+            <button>イメージをダウンロード</button>
+          </div>
         </div>
         <div className={styles.rightBody}>
           <div className={styles.lineUp}>
@@ -117,7 +134,7 @@ export default function Experience(props) {
                 }}
                 className={styles.modelList}
               >
-                <p className={styles.image}>image</p>
+                <img className={styles.image} src="/images/k012.jpeg" />
                 <p className={styles.modelNo}>K012</p>
               </li>
               <li
@@ -127,7 +144,7 @@ export default function Experience(props) {
                 }}
                 className={styles.modelList}
               >
-                <p className={styles.image}>image</p>
+                <img className={styles.image} src="/images/k029.jpeg" />
                 <p className={styles.modelNo}>K029</p>
               </li>
               <li
@@ -137,59 +154,20 @@ export default function Experience(props) {
                 }}
                 className={styles.modelList}
               >
-                <p className={styles.image}>image</p>
+                <img className={styles.image} src="/images/k087.jpeg" />
                 <p className={styles.modelNo}>K087</p>
               </li>
             </div>
           </div>
           <div className={styles.colorSection}>
             <h2>カラーを選択</h2>
-            <h3 className={styles.subTitle}>ベースカラー</h3>
-            <span className={styles.selection}>
-              選択中のカラー：
-              {texturesData.map((data) => {
-                if (data.id === props.baseColor) {
-                  return data.label;
-                }
-              })}
-            </span>
-            <div className={styles.colorVariation}>
-              {texturesData.map((li) => (
-                <li
-                  className={styles.colorList}
-                  key={li.id}
-                  id={props.baseColor === li.id ? "selected" : ""}
-                  onClick={() => {
-                    props.setBaseColor(li.id);
-                  }}
-                  style={{
-                    backgroundColor: `${li.thumbnail}`,
-                  }}
-                ></li>
-              ))}
-            </div>
-            <h3 className={styles.subTitle}>クッションカラー</h3>
-            <span className={styles.selection}>
-              選択中のカラー：
-              {texturesData.map((data) => {
-                if (data.id === props.cushionColor) {
-                  return data.label;
-                }
-              })}
-            </span>
-            <div className={styles.colorVariation2}>
-              {texturesData.map((li) => (
-                <li
-                  className={styles.colorList2}
-                  key={li.id}
-                  id={props.cushionColor === li.id ? "selected" : ""}
-                  onClick={() => {
-                    props.setCushionColor(li.id);
-                  }}
-                  style={{ backgroundColor: li.thumbnail }}
-                ></li>
-              ))}
-            </div>
+            <Colors
+              baseColor={props.baseColor}
+              setBaseColor={props.setBaseColor}
+              cushionColor={props.cushionColor}
+              setCushionColor={props.setCushionColor}
+              sofaNo={props.sofaNo}
+            />
           </div>
         </div>
       </div>

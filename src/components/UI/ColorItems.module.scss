@@ -1,0 +1,21 @@
+.colorVariation {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.colorList {
+  z-index: 1;
+  list-style: none;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #000;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
