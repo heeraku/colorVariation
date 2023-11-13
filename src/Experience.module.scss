@@ -28,6 +28,7 @@
 }
 
 .canvasWrapper {
+  position: relative;
   margin-bottom: 20px;
   width: 100%;
   height: 500px;
@@ -36,7 +37,7 @@
 
 .leftBody {
   padding: 20px 20px;
-  width: 600px;
+  width: 700px;
   min-width: 480px;
 }
 
@@ -151,5 +152,65 @@
     letter-spacing: 0.1em;
     border-radius: 100vw;
     cursor: pointer;
+  }
+}
+
+.sceneSelector {
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 40%;
+  //   height: 100%;
+  //   background-color: #efefef;
+  //   opacity: 0.3;
+  //   z-index: 0;
+  // }
+}
+
+.sceneSelectorInner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sceneSelectorTitle {
+  font-size: 20px;
+  z-index: 1;
+}
+
+.sceneSelectorList {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  z-index: 1;
+}
+
+.sceneSelectorItem {
+  width: 25px;
+  height: 25px;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  background-color: #fff;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+
+  &:nth-child(2) {
+    background-color: #b0a695;
+  }
+
+  &:last-child {
+    background-color: #776b5d;
+  }
+
+  &:hover {
+    opacity: 0.6;
   }
 }

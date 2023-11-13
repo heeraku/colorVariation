@@ -11,9 +11,12 @@ export default function App() {
   // cushion color
   const [cushionColor, setCushionColor] = useState(0);
 
-  // loading
+  // scene
+  const [scene, setScene] = useState(1);
 
+  // loading
   const [loading, setLoading] = useState(false);
+
   return (
     <>
       <Experience
@@ -25,6 +28,8 @@ export default function App() {
         setCushionColor={setCushionColor}
         loading={loading}
         setLoading={setLoading}
+        scene={scene}
+        setScene={setScene}
       />
     </>
   );

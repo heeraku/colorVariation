@@ -1,6 +1,12 @@
 import { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Text } from "@react-three/drei";
+import {
+  Environment,
+  MeshReflectorMaterial,
+  OrbitControls,
+  PerspectiveCamera,
+  Text,
+} from "@react-three/drei";
 import K012 from "./components/sofa/K012";
 import K029 from "./components/sofa/K029";
 import texturesData from "./data/textures.json";
@@ -8,6 +14,7 @@ import styles from "./Experience.module.scss";
 import K012w from "./components/sofa/K012w";
 import { K087 } from "./components/sofa/K087";
 import Colors from "./components/UI/Colors";
+import Scene from "./components/Scene";
 
 export default function Experience(props) {
   return (
@@ -24,7 +31,7 @@ export default function Experience(props) {
                 position: [0, 4, 10],
                 fov: 45,
                 near: 0.1,
-                far: 20,
+                far: 100,
               }}
             >
               {/* <PerspectiveCamera makeDefault position={[0, 0, 0]} /> */}
@@ -48,6 +55,15 @@ export default function Experience(props) {
                 // maxAzimuthAngle={Math.PI / 1.7}
                 // minAzimuthAngle={-Math.PI / 10}
               />
+              {/* <Environment
+                // files="/old_depot_2k.hdr"
+                files="/small_empty_room_3_2k.hdr"
+                ground={{ height: 10, radius: 100 }}
+                background
+              /> */}
+              {/* <PerspectiveCamera makeDefault position={[0, 2, 20]} fov={30} /> */}
+
+              <Scene scene={props.scene} />
 
               <Suspense
                 fallback={
@@ -93,6 +109,34 @@ export default function Experience(props) {
                 )}
               </Suspense>
             </Canvas>
+            <div className={styles.sceneSelector}>
+              <div className={styles.sceneSelectorInner}>
+                <div className={styles.sceneSelectorTitle}>シーン：</div>
+                <ul className={styles.sceneSelectorList}>
+                  <li
+                    className={styles.sceneSelectorItem}
+                    id={props.scene === 1 ? "selected" : ""}
+                    onClick={() => {
+                      props.setScene(1);
+                    }}
+                  ></li>
+                  <li
+                    className={styles.sceneSelectorItem}
+                    id={props.scene === 2 ? "selected" : ""}
+                    onClick={() => {
+                      props.setScene(2);
+                    }}
+                  ></li>
+                  <li
+                    className={styles.sceneSelectorItem}
+                    id={props.scene === 3 ? "selected" : ""}
+                    onClick={() => {
+                      props.setScene(3);
+                    }}
+                  ></li>
+                </ul>
+              </div>
+            </div>
           </div>
           <div className={styles.information}>
             <p>{props.sofaNo === "01" ? "K012" : "K029"}</p>
