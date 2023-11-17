@@ -1,5 +1,5 @@
-import { Suspense, useState } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Suspense, useEffect, useState } from "react";
+import { Canvas, useThree } from "@react-three/fiber";
 import {
   Environment,
   MeshReflectorMaterial,
@@ -15,6 +15,62 @@ import K012w from "./components/sofa/K012w";
 import { K087 } from "./components/sofa/K087";
 import Colors from "./components/UI/Colors";
 import Scene from "./components/Scene";
+import html2canvas from "html2canvas";
+
+// const Screenshot = (props) => {
+//   // screenshot
+//   const gl = useThree((state) => state.gl);
+
+//   useEffect(() => {
+//     if (props.isShot) {
+//       const link = document.createElement("a");
+//       link.setAttribute("download", "screenshot.png");
+//       link.setAttribute(
+//         "href",
+//         gl.domElement
+//           .toDataURL("image/png")
+//           .replace("image/png", "image/octet-stream")
+//       );
+//       link.click();
+//       props.setIsShot(false);
+//     }
+//   }, [props.isShot]);
+// };
+const Screenshot = (props) => {
+  const gl = useThree((state) => state.gl);
+
+  useEffect(() => {
+    if (props.isShot) {
+      // Capture the WebGL canvas
+      const canvas = gl.domElement;
+
+      // Capture the entire HTML content
+      const target = document.querySelector("#leftBody");
+      html2canvas(target).then((htmlCanvas) => {
+        // Create a new canvas to merge WebGL and HTML content
+        const finalCanvas = document.createElement("canvas");
+        finalCanvas.width = Math.max(canvas.width, htmlCanvas.width);
+        finalCanvas.height = Math.max(canvas.height, htmlCanvas.height);
+
+        // Draw WebGL content
+        const ctx = finalCanvas.getContext("2d");
+        ctx.drawImage(canvas, 0, 0, canvas.width, canvas.height);
+
+        // Draw HTML content
+        ctx.drawImage(htmlCanvas, 0, 0, htmlCanvas.width, htmlCanvas.height);
+
+        // Create a download link for the final image
+        const link = document.createElement("a");
+        link.setAttribute("download", "screenshot.png");
+        link.setAttribute("href", finalCanvas.toDataURL("image/png"));
+        link.click();
+
+        // Reset the screenshot flag
+        props.setIsShot(false);
+      });
+    }
+  }, [props.isShot]);
+};
 
 export default function Experience(props) {
   return (
@@ -22,7 +78,7 @@ export default function Experience(props) {
       <h1 className={styles.title}>カラーシミュレーション</h1>
       <div className={styles.main}>
         <div className={styles.leftBody}>
-          <div className={styles.canvasWrapper}>
+          <div className={styles.canvasWrapper} id="leftBody">
             <Canvas
               gl={{ preserveDrawingBuffer: true }}
               shadows
@@ -108,7 +164,27 @@ export default function Experience(props) {
                   />
                 )}
               </Suspense>
+              <Screenshot isShot={props.isShot} setIsShot={props.setIsShot} />
             </Canvas>
+            <div className={styles.information}>
+              <p>{props.sofaNo === "01" ? "K012" : "K029"}</p>
+              <p>
+                ベースカラー：
+                {texturesData.map((data) => {
+                  if (data.id === props.baseColor) {
+                    return data.label;
+                  }
+                })}
+              </p>
+              <p>
+                クッションカラー：
+                {texturesData.map((data) => {
+                  if (data.id === props.cushionColor) {
+                    return data.label;
+                  }
+                })}
+              </p>
+            </div>
             <div className={styles.sceneSelector}>
               <div className={styles.sceneSelectorInner}>
                 <div className={styles.sceneSelectorTitle}>シーン：</div>
@@ -138,27 +214,15 @@ export default function Experience(props) {
               </div>
             </div>
           </div>
-          <div className={styles.information}>
-            <p>{props.sofaNo === "01" ? "K012" : "K029"}</p>
-            <p>
-              ベースカラー：
-              {texturesData.map((data) => {
-                if (data.id === props.baseColor) {
-                  return data.label;
-                }
-              })}
-            </p>
-            <p>
-              クッションカラー：
-              {texturesData.map((data) => {
-                if (data.id === props.cushionColor) {
-                  return data.label;
-                }
-              })}
-            </p>
-          </div>
+
           <div className={styles.exportSection}>
-            <button>イメージをダウンロード</button>
+            <button
+              onClick={() => {
+                props.setIsShot(true);
+              }}
+            >
+              イメージをダウンロード
+            </button>
           </div>
         </div>
         <div className={styles.rightBody}>

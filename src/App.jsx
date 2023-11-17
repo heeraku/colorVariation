@@ -17,6 +17,9 @@ export default function App() {
   // loading
   const [loading, setLoading] = useState(false);
 
+  //screeShot
+  const [isShot, setIsShot] = useState(false);
+
   return (
     <>
       <Experience
@@ -30,6 +33,8 @@ export default function App() {
         setLoading={setLoading}
         scene={scene}
         setScene={setScene}
+        isShot={isShot}
+        setIsShot={setIsShot}
       />
     </>
   );
