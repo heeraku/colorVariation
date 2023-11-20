@@ -210,8 +210,11 @@
     background-color: #b0a695;
   }
 
-  &:last-child {
+  &:nth-child(3) {
     background-color: #776b5d;
+  }
+  &:last-child {
+    background-color: green;
   }
 
   &:hover {

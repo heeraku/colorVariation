@@ -101,6 +101,7 @@ export default function Experience(props) {
               <OrbitControls
                 makeDefault
                 enableZoom={true}
+                zoomSpeed={0.1}
                 // enablePan
                 target={[0, 0, 0]}
                 // maxDistance={20}
@@ -111,15 +112,23 @@ export default function Experience(props) {
                 // maxAzimuthAngle={Math.PI / 1.7}
                 // minAzimuthAngle={-Math.PI / 10}
               />
-              {/* <Environment
-                // files="/old_depot_2k.hdr"
-                files="/small_empty_room_3_2k.hdr"
-                ground={{ height: 10, radius: 100 }}
-                background
-              /> */}
-              {/* <PerspectiveCamera makeDefault position={[0, 2, 20]} fov={30} /> */}
 
-              <Scene scene={props.scene} />
+              {props.scene !== 4 && <Scene scene={props.scene} />}
+
+              {props.scene === 4 && (
+                <>
+                  <Environment
+                    files="/brown_photostudio_02_1k.hdr"
+                    ground={{ height: 15, radius: 20, scale: 10 }}
+                    background
+                  />
+                  <PerspectiveCamera
+                    makeDefault
+                    position={[0, 5, 8]}
+                    fov={50}
+                  />
+                </>
+              )}
 
               <Suspense
                 fallback={
@@ -208,6 +217,13 @@ export default function Experience(props) {
                     id={props.scene === 3 ? "selected" : ""}
                     onClick={() => {
                       props.setScene(3);
+                    }}
+                  ></li>
+                  <li
+                    className={styles.sceneSelectorItem}
+                    id={props.scene === 4 ? "selected" : ""}
+                    onClick={() => {
+                      props.setScene(4);
                     }}
                   ></li>
                 </ul>
