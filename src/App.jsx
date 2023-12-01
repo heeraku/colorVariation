@@ -6,10 +6,10 @@ export default function App() {
   const [sofaNo, setSofaNo] = useState("01");
 
   // base color
-  const [baseColor, setBaseColor] = useState(0);
+  const [baseColor, setBaseColor] = useState(2);
 
   // cushion color
-  const [cushionColor, setCushionColor] = useState(0);
+  const [cushionColor, setCushionColor] = useState(4);
 
   // scene
   const [scene, setScene] = useState(1);

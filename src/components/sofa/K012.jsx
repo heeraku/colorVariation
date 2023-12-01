@@ -26,6 +26,8 @@ export default function K012(props) {
   return (
     <group {...props} dispose={null}>
       <mesh
+        castShadow
+        receiveShadow
         name="backrest_right"
         geometry={nodes.backrest_right.geometry}
         material={nodes.backrest_right.material}
@@ -35,6 +37,8 @@ export default function K012(props) {
         <meshStandardMaterial map={baseColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="backrest_right02"
         geometry={nodes.backrest_right02.geometry}
         material={nodes.backrest_right02.material}
@@ -44,6 +48,8 @@ export default function K012(props) {
         <meshStandardMaterial map={baseColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="pillow_right"
         geometry={nodes.pillow_right.geometry}
         material={nodes.pillow_right.material}
@@ -53,6 +59,8 @@ export default function K012(props) {
         <meshStandardMaterial map={cushionColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="pillow_right2"
         geometry={nodes.pillow_right2.geometry}
         material={nodes.pillow_right2.material}
@@ -62,6 +70,8 @@ export default function K012(props) {
         <meshStandardMaterial map={cushionColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="seat_right"
         geometry={nodes.seat_right.geometry}
         material={nodes.seat_right.material}
@@ -71,6 +81,8 @@ export default function K012(props) {
         <meshStandardMaterial map={cushionColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="smallPillow_right"
         geometry={nodes.smallPillow_right.geometry}
         material={nodes.smallPillow_right.material}
@@ -80,6 +92,8 @@ export default function K012(props) {
         <meshStandardMaterial map={cushionColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="smallPillow_right02"
         geometry={nodes.smallPillow_right02.geometry}
         material={nodes.smallPillow_right02.material}
@@ -89,6 +103,8 @@ export default function K012(props) {
         <meshStandardMaterial map={cushionColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="underseat_right"
         geometry={nodes.underseat_right.geometry}
         material={nodes.underseat_right.material}
@@ -98,6 +114,8 @@ export default function K012(props) {
         <meshStandardMaterial map={baseColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="backrest_center"
         geometry={nodes.backrest_center.geometry}
         material={nodes.backrest_center.material}
@@ -107,6 +125,8 @@ export default function K012(props) {
         <meshStandardMaterial map={baseColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="pillow_center"
         geometry={nodes.pillow_center.geometry}
         material={nodes.pillow_center.material}
@@ -116,6 +136,8 @@ export default function K012(props) {
         <meshStandardMaterial map={cushionColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="pillow_center02"
         geometry={nodes.pillow_center02.geometry}
         material={nodes.pillow_center02.material}
@@ -125,6 +147,8 @@ export default function K012(props) {
         <meshStandardMaterial map={cushionColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="seat_center"
         geometry={nodes.seat_center.geometry}
         material={nodes.seat_center.material}
@@ -134,6 +158,8 @@ export default function K012(props) {
         <meshStandardMaterial map={cushionColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="smallPillow_center"
         geometry={nodes.smallPillow_center.geometry}
         material={nodes.smallPillow_center.material}
@@ -143,6 +169,8 @@ export default function K012(props) {
         <meshStandardMaterial map={cushionColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="smallPillow_center02"
         geometry={nodes.smallPillow_center02.geometry}
         material={nodes.smallPillow_center02.material}
@@ -152,6 +180,8 @@ export default function K012(props) {
         <meshStandardMaterial map={cushionColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="underseat_center"
         geometry={nodes.underseat_center.geometry}
         material={nodes.underseat_center.material}
@@ -161,6 +191,8 @@ export default function K012(props) {
         <meshStandardMaterial map={baseColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="seat_left"
         geometry={nodes.seat_left.geometry}
         material={nodes.seat_left.material}
@@ -170,6 +202,8 @@ export default function K012(props) {
         <meshStandardMaterial map={cushionColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="underseat_left"
         geometry={nodes.underseat_left.geometry}
         material={nodes.underseat_left.material}
@@ -179,6 +213,8 @@ export default function K012(props) {
         <meshStandardMaterial map={baseColor} />
       </mesh>
       <mesh
+        castShadow
+        receiveShadow
         name="leg01"
         geometry={nodes.leg01.geometry}
         material={nodes.leg01.material}
@@ -186,6 +222,8 @@ export default function K012(props) {
         rotation={[0, Math.PI / 6, 0]}
       />
       <mesh
+        castShadow
+        receiveShadow
         name="leg02"
         geometry={nodes.leg02.geometry}
         material={nodes.leg02.material}
@@ -193,6 +231,8 @@ export default function K012(props) {
         rotation={[0, -Math.PI / 6, 0]}
       />
       <mesh
+        castShadow
+        receiveShadow
         name="leg03"
         geometry={nodes.leg03.geometry}
         material={nodes.leg03.material}
@@ -200,6 +240,8 @@ export default function K012(props) {
         rotation={[0, 0.611, 0]}
       />
       <mesh
+        castShadow
+        receiveShadow
         name="leg04"
         geometry={nodes.leg04.geometry}
         material={nodes.leg04.material}
@@ -207,6 +249,8 @@ export default function K012(props) {
         rotation={[0, -0.698, 0]}
       />
       <mesh
+        castShadow
+        receiveShadow
         name="leg05"
         geometry={nodes.leg05.geometry}
         material={nodes.leg05.material}
@@ -214,6 +258,8 @@ export default function K012(props) {
         rotation={[-Math.PI, Math.PI / 3, -Math.PI]}
       />
       <mesh
+        castShadow
+        receiveShadow
         name="leg06"
         geometry={nodes.leg06.geometry}
         material={nodes.leg06.material}
@@ -221,36 +267,48 @@ export default function K012(props) {
         rotation={[0, Math.PI / 3, 0]}
       />
       <mesh
+        castShadow
+        receiveShadow
         name="rubber_leg01"
         geometry={nodes.rubber_leg01.geometry}
         material={nodes.rubber_leg01.material}
         position={[1.568, 0, -0.898]}
       />
       <mesh
+        castShadow
+        receiveShadow
         name="rubber_leg02"
         geometry={nodes.rubber_leg02.geometry}
         material={nodes.rubber_leg02.material}
         position={[0.892, 0, -0.898]}
       />
       <mesh
+        castShadow
+        receiveShadow
         name="rubber_leg03"
         geometry={nodes.rubber_leg03.geometry}
         material={nodes.rubber_leg03.material}
         position={[0.735, 0, -0.898]}
       />
       <mesh
+        castShadow
+        receiveShadow
         name="rubber_leg04"
         geometry={nodes.rubber_leg04.geometry}
         material={nodes.rubber_leg04.material}
         position={[-0.456, 0, -0.898]}
       />
       <mesh
+        castShadow
+        receiveShadow
         name="rubber_leg05"
         geometry={nodes.rubber_leg05.geometry}
         material={nodes.rubber_leg05.material}
         position={[-1.539, 0, 0.278]}
       />
       <mesh
+        castShadow
+        receiveShadow
         name="rubber_leg06"
         geometry={nodes.rubber_leg06.geometry}
         material={nodes.rubber_leg06.material}

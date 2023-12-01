@@ -1,10 +1,13 @@
 import { Suspense, useEffect, useState } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
 import {
+  Backdrop,
   Environment,
   MeshReflectorMaterial,
   OrbitControls,
   PerspectiveCamera,
+  SoftShadows,
+  SpotLight,
   Text,
 } from "@react-three/drei";
 import K012 from "./components/sofa/K012";
@@ -90,26 +93,42 @@ export default function Experience(props) {
                 far: 100,
               }}
             >
+              {/* <fog attach="fog" args={["red", 8, 35]} /> */}
               {/* <PerspectiveCamera makeDefault position={[0, 0, 0]} /> */}
               {/* background */}
               <color attach="background" args={["#fff"]} />
               {/* light */}
-              <pointLight position={[4, 3, 2]} intensity={0.5} />
-              <directionalLight position={[-2, 5, 0]} intensity={0.5} />
-              <directionalLight position={[0, 2, -3]} intensity={0.8} />
-              <directionalLight position={[5, 2, 3]} intensity={0.8} />
+              <pointLight
+                position={[2, 2, -0.5]}
+                intensity={0.5}
+                color={"#F0ECE5"}
+              />
+              {/* <SpotLight
+        position={[-3, 5, 1]}
+        angle={Math.PI / 3}
+        attenuation={10}
+        anglePower={10}
+        color={"#FDF7E4"}
+        castShadow
+      /> */}
+              <directionalLight
+                position={[-2, 3.5, -0.5]}
+                intensity={1}
+                castShadow
+              />
+              <SoftShadows size={12} samples={6} focus={10} />
               <OrbitControls
                 makeDefault
                 enableZoom={true}
-                zoomSpeed={0.1}
+                zoomSpeed={0.5}
                 // enablePan
                 target={[0, 0, 0]}
                 // maxDistance={20}
                 // minDistance={0.1}
                 // minPolarAngle={Math.PI / 2.5}
-                minPolarAngle={Math.PI / -2}
-                maxPolarAngle={Math.PI / 2}
-                // maxAzimuthAngle={Math.PI / 1.7}
+                // minPolarAngle={Math.PI / 2.8}
+                // maxPolarAngle={Math.PI / 2.8}
+                // maxAzimuthAngle={Math.PI / 10}
                 // minAzimuthAngle={-Math.PI / 10}
               />
 
@@ -128,6 +147,17 @@ export default function Experience(props) {
                     fov={50}
                   />
                 </>
+              )}
+
+              {props.scene === 5 && (
+                <Backdrop
+                  receiveShadow
+                  scale={[20, 5, 5]}
+                  floor={1.5}
+                  position={[0, -1, -3.5]}
+                >
+                  <meshPhysicalMaterial roughness={1} color="#efefef" />
+                </Backdrop>
               )}
 
               <Suspense
@@ -226,6 +256,13 @@ export default function Experience(props) {
                       props.setScene(4);
                     }}
                   ></li>
+                  <li
+                    className={styles.sceneSelectorItem}
+                    id={props.scene === 5 ? "selected" : ""}
+                    onClick={() => {
+                      props.setScene(5);
+                    }}
+                  ></li>
                 </ul>
               </div>
             </div>
@@ -296,5 +333,109 @@ export default function Experience(props) {
         </div>
       </div>
     </section>
+    // <Canvas
+    //   gl={{ preserveDrawingBuffer: true }}
+    //   shadows
+    //   dpr={[1, 2]}
+    //   camera={{
+    //     position: [0, 3, 10],
+    //     fov: 45,
+    //     near: 0.1,
+    //     far: 100,
+    //   }}
+    // >
+    //   {/* <Backdrop
+    //     receiveShadow
+    //     scale={[20, 5, 5]}
+    //     floor={1.5}
+    //     position={[0, -1, -3.5]}
+    //   >
+    //     <meshPhysicalMaterial roughness={1} color="#efefef" />
+    //   </Backdrop> */}
+    //   {/* <fog attach="fog" args={["red", 8, 35]} /> */}
+    //   {/* <PerspectiveCamera makeDefault position={[0, 0, 0]} /> */}
+    //   {/* background */}
+    //   <color attach="background" args={["#fff"]} />
+    //   {/* light */}
+    //   <pointLight position={[2, 2, -0.5]} intensity={0.5} color={"#F0ECE5"} />
+    //   {/* <SpotLight
+    //     position={[-3, 5, 1]}
+    //     angle={Math.PI / 3}
+    //     attenuation={10}
+    //     anglePower={10}
+    //     color={"#FDF7E4"}
+    //     castShadow
+    //   /> */}
+    //   <directionalLight position={[-2, 3.5, -0.5]} intensity={1} castShadow />
+    //   <SoftShadows size={12} samples={6} focus={10} />
+    //   <OrbitControls
+    //     makeDefault
+    //     enableZoom={true}
+    //     zoomSpeed={0.5}
+    //     // enablePan
+    //     target={[0, 0, 0]}
+    //     // maxDistance={20}
+    //     // minDistance={0.1}
+    //     // minPolarAngle={Math.PI / 2.5}
+    //     // minPolarAngle={Math.PI / 2.8}
+    //     // maxPolarAngle={Math.PI / 2.8}
+    //     // maxAzimuthAngle={Math.PI / 10}
+    //     // minAzimuthAngle={-Math.PI / 10}
+    //   />
+
+    //   {props.scene !== 4 && <Scene scene={props.scene} />}
+
+    //   {props.scene === 4 && (
+    //     <>
+    //       <Environment
+    //         files="/brown_photostudio_02_1k.hdr"
+    //         ground={{ height: 15, radius: 20, scale: 10 }}
+    //         background
+    //       />
+    //       <PerspectiveCamera makeDefault position={[0, 5, 8]} fov={50} />
+    //     </>
+    //   )}
+
+    //   <Suspense
+    //     fallback={
+    //       <K012w position={[0.2, -1, 0]} scale={2.5} rotation={[0, 0, 0]} />
+    //     }
+    //   >
+    //     {props.sofaNo === "01" && (
+    //       <>
+    //         <K012
+    //           position={[0.2, -1, 0]}
+    //           scale={2.5}
+    //           rotation={[0, 0, 0]}
+    //           baseColor={props.baseColor}
+    //           cushionColor={props.cushionColor}
+    //         />
+    //       </>
+    //     )}
+    //   </Suspense>
+    //   <Suspense fallback={null}>
+    //     {props.sofaNo === "02" && (
+    //       <K029
+    //         position={[-0.5, -1, 0]}
+    //         scale={2.85}
+    //         rotation={[0, 0, 0]}
+    //         baseColor={props.baseColor}
+    //         cushionColor={props.cushionColor}
+    //       />
+    //     )}
+    //   </Suspense>
+    //   <Suspense fallback={null}>
+    //     {props.sofaNo === "03" && (
+    //       <K087
+    //         position={[0, -1, 0]}
+    //         scale={2.5}
+    //         rotation={[0, 0, 0]}
+    //         baseColor={props.baseColor}
+    //         cushionColor={props.cushionColor}
+    //       />
+    //     )}
+    //   </Suspense>
+    //   <Screenshot isShot={props.isShot} setIsShot={props.setIsShot} />
+    // </Canvas>
   );
 }
