@@ -14,11 +14,14 @@ export default function K012(props) {
   baseColor.wrapS = baseColor.wrapT = THREE.RepeatWrapping;
   baseColor.repeat.set(3, 3);
 
+  const isBaseLeather = selectedBaseColor.leather;
+
   const selectedCushionColor = texturesData.find(
     (texture) => texture.id === props.cushionColor
   );
 
   const cushionColor = useTexture(selectedCushionColor?.url);
+  const isCushionLeather = selectedCushionColor.leather;
 
   cushionColor.wrapS = cushionColor.wrapT = THREE.RepeatWrapping;
   cushionColor.repeat.set(3, 3);
@@ -34,7 +37,10 @@ export default function K012(props) {
         position={[0.669, 0.384, -0.91]}
         rotation={[Math.PI / 2, 0, Math.PI / 2]}
       >
-        <meshStandardMaterial map={baseColor} />
+        <meshStandardMaterial
+          map={baseColor}
+          roughness={isBaseLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -45,7 +51,10 @@ export default function K012(props) {
         position={[-1.516, 0.384, 1.146]}
         rotation={[Math.PI / 2, 0, 0]}
       >
-        <meshStandardMaterial map={baseColor} />
+        <meshStandardMaterial
+          map={baseColor}
+          roughness={isBaseLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -56,7 +65,10 @@ export default function K012(props) {
         position={[1.26, 0.604, -0.881]}
         rotation={[1.35, -0.018, 0.014]}
       >
-        <meshStandardMaterial map={cushionColor} />
+        <meshStandardMaterial
+          map={cushionColor}
+          roughness={isCushionLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -67,7 +79,10 @@ export default function K012(props) {
         position={[-1.502, 0.605, 0.551]}
         rotation={[1.551, 0.221, -1.551]}
       >
-        <meshStandardMaterial map={cushionColor} />
+        <meshStandardMaterial
+          map={cushionColor}
+          roughness={isCushionLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -78,7 +93,10 @@ export default function K012(props) {
         position={[2.493, 0.309, -0.514]}
         rotation={[Math.PI / 2, 0, Math.PI / 2]}
       >
-        <meshStandardMaterial map={cushionColor} />
+        <meshStandardMaterial
+          map={cushionColor}
+          roughness={isCushionLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -89,7 +107,10 @@ export default function K012(props) {
         position={[1.272, 0.509, -0.71]}
         rotation={[1.254, -0.01, 0.009]}
       >
-        <meshStandardMaterial map={cushionColor} />
+        <meshStandardMaterial
+          map={cushionColor}
+          roughness={isCushionLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -100,7 +121,10 @@ export default function K012(props) {
         position={[-1.317, 0.508, 0.545]}
         rotation={[1.56, 0.317, -1.558]}
       >
-        <meshStandardMaterial map={cushionColor} />
+        <meshStandardMaterial
+          map={cushionColor}
+          roughness={isCushionLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -111,7 +135,10 @@ export default function K012(props) {
         position={[2.533, 0.125, -0.528]}
         rotation={[Math.PI / 2, 0, Math.PI / 2]}
       >
-        <meshStandardMaterial map={baseColor} />
+        <meshStandardMaterial
+          map={baseColor}
+          roughness={isBaseLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -122,7 +149,10 @@ export default function K012(props) {
         position={[-0.743, 0.384, -0.91]}
         rotation={[Math.PI / 2, 0, Math.PI / 2]}
       >
-        <meshStandardMaterial map={baseColor} />
+        <meshStandardMaterial
+          map={baseColor}
+          roughness={isBaseLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -133,7 +163,10 @@ export default function K012(props) {
         position={[0.453, 0.601, -0.883]}
         rotation={[1.35, -0.019, 0.015]}
       >
-        <meshStandardMaterial map={cushionColor} />
+        <meshStandardMaterial
+          map={cushionColor}
+          roughness={isCushionLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -144,7 +177,10 @@ export default function K012(props) {
         position={[-0.136, 0.601, -0.883]}
         rotation={[1.35, -0.019, 0.015]}
       >
-        <meshStandardMaterial map={cushionColor} />
+        <meshStandardMaterial
+          map={cushionColor}
+          roughness={isCushionLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -155,7 +191,10 @@ export default function K012(props) {
         position={[0.819, 0.309, -0.514]}
         rotation={[Math.PI / 2, 0, Math.PI / 2]}
       >
-        <meshStandardMaterial map={cushionColor} />
+        <meshStandardMaterial
+          map={cushionColor}
+          roughness={isCushionLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -166,7 +205,10 @@ export default function K012(props) {
         position={[0.462, 0.509, -0.709]}
         rotation={[1.254, -0.011, 0.01]}
       >
-        <meshStandardMaterial map={cushionColor} />
+        <meshStandardMaterial
+          map={cushionColor}
+          roughness={isCushionLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -177,7 +219,10 @@ export default function K012(props) {
         position={[-0.127, 0.509, -0.709]}
         rotation={[1.254, -0.011, 0.01]}
       >
-        <meshStandardMaterial map={cushionColor} />
+        <meshStandardMaterial
+          map={cushionColor}
+          roughness={isCushionLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -188,7 +233,10 @@ export default function K012(props) {
         position={[0.84, 0.125, -0.516]}
         rotation={[Math.PI / 2, 0, Math.PI / 2]}
       >
-        <meshStandardMaterial map={baseColor} />
+        <meshStandardMaterial
+          map={baseColor}
+          roughness={isBaseLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -199,7 +247,10 @@ export default function K012(props) {
         position={[-1.121, 0.309, -0.701]}
         rotation={[Math.PI / 2, 0, 0]}
       >
-        <meshStandardMaterial map={cushionColor} />
+        <meshStandardMaterial
+          map={cushionColor}
+          roughness={isCushionLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -210,7 +261,10 @@ export default function K012(props) {
         position={[-1.138, 0.125, -0.721]}
         rotation={[Math.PI / 2, 0, 0]}
       >
-        <meshStandardMaterial map={baseColor} />
+        <meshStandardMaterial
+          map={baseColor}
+          roughness={isBaseLeather ? 0.5 : 1}
+        />
       </mesh>
       <mesh
         castShadow
@@ -220,7 +274,9 @@ export default function K012(props) {
         material={nodes.leg01.material}
         position={[1.556, 0, 0.473]}
         rotation={[0, Math.PI / 6, 0]}
-      />
+      >
+        <meshStandardMaterial color={"#A9A9A9"} metalness={1} roughness={0.5} />
+      </mesh>
       <mesh
         castShadow
         receiveShadow
@@ -229,7 +285,9 @@ export default function K012(props) {
         material={nodes.leg02.material}
         position={[0.884, 0, 0.473]}
         rotation={[0, -Math.PI / 6, 0]}
-      />
+      >
+        <meshStandardMaterial color={"#A9A9A9"} metalness={1} roughness={0.5} />
+      </mesh>
       <mesh
         castShadow
         receiveShadow
@@ -238,7 +296,9 @@ export default function K012(props) {
         material={nodes.leg03.material}
         position={[0.752, 0, -0.164]}
         rotation={[0, 0.611, 0]}
-      />
+      >
+        <meshStandardMaterial color={"#A9A9A9"} metalness={1} roughness={0.5} />
+      </mesh>
       <mesh
         castShadow
         receiveShadow
@@ -247,7 +307,9 @@ export default function K012(props) {
         material={nodes.leg04.material}
         position={[-0.494, 0, -0.16]}
         rotation={[0, -0.698, 0]}
-      />
+      >
+        <meshStandardMaterial color={"#A9A9A9"} metalness={1} roughness={0.5} />
+      </mesh>
       <mesh
         castShadow
         receiveShadow
@@ -256,7 +318,9 @@ export default function K012(props) {
         material={nodes.leg05.material}
         position={[-0.786, 0, 0.28]}
         rotation={[-Math.PI, Math.PI / 3, -Math.PI]}
-      />
+      >
+        <meshStandardMaterial color={"#A9A9A9"} metalness={1} roughness={0.5} />
+      </mesh>
       <mesh
         castShadow
         receiveShadow
@@ -265,7 +329,9 @@ export default function K012(props) {
         material={nodes.leg06.material}
         position={[-0.786, 0, 0.926]}
         rotation={[0, Math.PI / 3, 0]}
-      />
+      >
+        <meshStandardMaterial color={"#A9A9A9"} metalness={1} roughness={0.5} />
+      </mesh>
       <mesh
         castShadow
         receiveShadow

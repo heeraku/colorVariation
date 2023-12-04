@@ -180,13 +180,17 @@
 }
 
 .sceneSelectorInner {
+  padding: 5px 10px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
+  background-color: #b4b4b3;
+  width: fit-content;
+  border-radius: 100vw;
 }
 
 .sceneSelectorTitle {
-  font-size: 20px;
+  font-size: 16px;
   z-index: 1;
 }
 
@@ -198,26 +202,44 @@
 }
 
 .sceneSelectorItem {
-  width: 25px;
-  height: 25px;
-  border: 2px solid #fff;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #fff;
   border-radius: 100%;
-  background-color: #fff;
+  background-color: #fff1c1;
   cursor: pointer;
   transition: opacity 0.3s ease;
 
   &:nth-child(2) {
-    background-color: #b0a695;
+    background-color: #000;
   }
 
   &:nth-child(3) {
-    background-color: #776b5d;
+    background-color: #fff;
   }
   &:last-child {
-    background-color: green;
+    background-color: #8d8daa;
   }
 
   &:hover {
     opacity: 0.6;
   }
 }
+
+// .colorSelector {
+//   position: absolute;
+//   top: 10px;
+//   right: 10px;
+
+//   .color_btn {
+//     width: 18px;
+//     height: 18px;
+//     background-color: #fff;
+//     border-radius: 50%;
+
+//     &:hover {
+//       opacity: 0.6;
+//       cursor: pointer;
+//     }
+//   }
+// }

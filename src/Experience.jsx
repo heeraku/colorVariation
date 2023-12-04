@@ -1,5 +1,5 @@
-import { Suspense, useEffect, useState } from "react";
-import { Canvas, useThree } from "@react-three/fiber";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   Backdrop,
   Environment,
@@ -10,6 +10,7 @@ import {
   SpotLight,
   Text,
 } from "@react-three/drei";
+import { MeshPortalMaterial } from "@react-three/drei";
 import K012 from "./components/sofa/K012";
 import K029 from "./components/sofa/K029";
 import texturesData from "./data/textures.json";
@@ -87,8 +88,8 @@ export default function Experience(props) {
               shadows
               dpr={[1, 2]}
               camera={{
-                position: [0, 3, 10],
-                fov: 45,
+                position: [0, 2.5, 11],
+                fov: 40,
                 near: 0.1,
                 far: 100,
               }}
@@ -96,31 +97,15 @@ export default function Experience(props) {
               {/* <fog attach="fog" args={["red", 8, 35]} /> */}
               {/* <PerspectiveCamera makeDefault position={[0, 0, 0]} /> */}
               {/* background */}
-              <color attach="background" args={["#fff"]} />
+              <color attach="background" args={["#000"]} />
               {/* light */}
-              <pointLight
-                position={[2, 2, -0.5]}
-                intensity={0.5}
-                color={"#F0ECE5"}
-              />
-              {/* <SpotLight
-        position={[-3, 5, 1]}
-        angle={Math.PI / 3}
-        attenuation={10}
-        anglePower={10}
-        color={"#FDF7E4"}
-        castShadow
-      /> */}
-              <directionalLight
-                position={[-2, 3.5, -0.5]}
-                intensity={1}
-                castShadow
-              />
-              <SoftShadows size={12} samples={6} focus={10} />
+              {/* <ambientLight intensity={0.05} /> */}
+
+              {/* <SoftShadows size={5} samples={10} focus={0} /> */}
               <OrbitControls
                 makeDefault
                 enableZoom={true}
-                zoomSpeed={0.5}
+                zoomSpeed={0.8}
                 // enablePan
                 target={[0, 0, 0]}
                 // maxDistance={20}
@@ -130,80 +115,84 @@ export default function Experience(props) {
                 // maxPolarAngle={Math.PI / 2.8}
                 // maxAzimuthAngle={Math.PI / 10}
                 // minAzimuthAngle={-Math.PI / 10}
+                // autoRotate
+                // autoRotateSpeed={0.5}
               />
 
-              {props.scene !== 4 && <Scene scene={props.scene} />}
+              {props.scene !== 4 && (
+                <Scene
+                  scene={props.scene}
+                  baseColor={props.baseColor}
+                  cushionColor={props.cushionColor}
+                />
+              )}
 
-              {props.scene === 4 && (
+              {props.scene !== 5 && props.scene === 4 && (
                 <>
                   <Environment
-                    files="/brown_photostudio_02_1k.hdr"
-                    ground={{ height: 15, radius: 20, scale: 10 }}
+                    files="/hdr01.hdr"
+                    ground={{ height: 15, radius: 30, scale: 10 }}
                     background
                   />
                   <PerspectiveCamera
                     makeDefault
                     position={[0, 5, 8]}
-                    fov={50}
+                    fov={60}
                   />
                 </>
               )}
 
-              {props.scene === 5 && (
-                <Backdrop
-                  receiveShadow
-                  scale={[20, 5, 5]}
-                  floor={1.5}
-                  position={[0, -1, -3.5]}
-                >
-                  <meshPhysicalMaterial roughness={1} color="#efefef" />
-                </Backdrop>
+              {props.scene !== 5 && (
+                <>
+                  <Suspense
+                    fallback={
+                      <K012w
+                        position={[0.2, -1, 0]}
+                        scale={2.5}
+                        rotation={[0, 0, 0]}
+                      />
+                    }
+                  >
+                    {props.sofaNo === "01" && (
+                      <>
+                        <K012
+                          position={[0.2, -1, 0]}
+                          scale={2.5}
+                          rotation={[0, 0, 0]}
+                          baseColor={props.baseColor}
+                          cushionColor={props.cushionColor}
+                        />
+                      </>
+                    )}
+                  </Suspense>
+                  <Suspense fallback={null}>
+                    {props.sofaNo === "02" && (
+                      <K029
+                        position={[-0.5, -1, 0]}
+                        scale={2.85}
+                        rotation={[0, 0, 0]}
+                        baseColor={props.baseColor}
+                        cushionColor={props.cushionColor}
+                      />
+                    )}
+                  </Suspense>
+                  <Suspense fallback={null}>
+                    {props.sofaNo === "03" && (
+                      <K087
+                        position={[0, -1, 0]}
+                        scale={2.5}
+                        rotation={[0, 0, 0]}
+                        baseColor={props.baseColor}
+                        cushionColor={props.cushionColor}
+                      />
+                    )}
+                  </Suspense>
+                  <Screenshot
+                    isShot={props.isShot}
+                    setIsShot={props.setIsShot}
+                  />
+                </>
               )}
-
-              <Suspense
-                fallback={
-                  <K012w
-                    position={[0.2, -1, 0]}
-                    scale={2.5}
-                    rotation={[0, 0, 0]}
-                  />
-                }
-              >
-                {props.sofaNo === "01" && (
-                  <>
-                    <K012
-                      position={[0.2, -1, 0]}
-                      scale={2.5}
-                      rotation={[0, 0, 0]}
-                      baseColor={props.baseColor}
-                      cushionColor={props.cushionColor}
-                    />
-                  </>
-                )}
-              </Suspense>
-              <Suspense fallback={null}>
-                {props.sofaNo === "02" && (
-                  <K029
-                    position={[-0.5, -1, 0]}
-                    scale={2.85}
-                    rotation={[0, 0, 0]}
-                    baseColor={props.baseColor}
-                    cushionColor={props.cushionColor}
-                  />
-                )}
-              </Suspense>
-              <Suspense fallback={null}>
-                {props.sofaNo === "03" && (
-                  <K087
-                    position={[0, -1, 0]}
-                    scale={2.5}
-                    rotation={[0, 0, 0]}
-                    baseColor={props.baseColor}
-                    cushionColor={props.cushionColor}
-                  />
-                )}
-              </Suspense>
-              <Screenshot isShot={props.isShot} setIsShot={props.setIsShot} />
             </Canvas>
             <div className={styles.information}>
               <p>{props.sofaNo === "01" ? "K012" : "K029"}</p>
@@ -224,6 +213,7 @@ export default function Experience(props) {
                 })}
               </p>
             </div>
+
             <div className={styles.sceneSelector}>
               <div className={styles.sceneSelectorInner}>
                 <div className={styles.sceneSelectorTitle}>シーン：</div>
@@ -266,6 +256,9 @@ export default function Experience(props) {
                 </ul>
               </div>
             </div>
+            {/* <div className={styles.colorSelector}>
+              <div className={styles.color_btn}></div>
+            </div> */}
           </div>
 
           <div className={styles.exportSection}>
