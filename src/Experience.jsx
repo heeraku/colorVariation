@@ -88,7 +88,7 @@ export default function Experience(props) {
               shadows
               dpr={[1, 2]}
               camera={{
-                position: [0, 2.5, 11],
+                position: [0, 3.5, 11],
                 fov: 40,
                 near: 0.1,
                 far: 100,

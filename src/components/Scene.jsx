@@ -12,13 +12,13 @@ import K029 from "./sofa/K029";
 import { K087 } from "./sofa/K087";
 
 export default function Scene(props) {
-  const scene01wall = useTexture("./scenes/wall00.jpg");
-  scene01wall.wrapS = scene01wall.wrapT = THREE.RepeatWrapping;
-  scene01wall.repeat.set(5, 5);
+  // const scene01wall = useTexture("./scenes/wall00.jpg");
+  // scene01wall.wrapS = scene01wall.wrapT = THREE.RepeatWrapping;
+  // scene01wall.repeat.set(5, 5);
 
-  const scene02wall = useTexture("./scenes/wall02.jpg");
-  scene02wall.wrapS = scene02wall.wrapT = THREE.RepeatWrapping;
-  scene02wall.repeat.set(3, 2);
+  // const scene02wall = useTexture("./scenes/wall02.jpg");
+  // scene02wall.wrapS = scene02wall.wrapT = THREE.RepeatWrapping;
+  // scene02wall.repeat.set(3, 2);
 
   // const scene03wall = useTexture("./scenes/wall03.jpg");
   // scene03wall.wrapS = scene03wall.wrapT = THREE.RepeatWrapping;
@@ -34,18 +34,59 @@ export default function Scene(props) {
   scene02floor.repeat.set(4, 4);
   scene02floor.encoding = THREE.sRGBEncoding;
 
-  // const scene03floor = useTexture("./scenes/floor02.jpg");
-  // scene03floor.wrapS = scene03floor.wrapT = THREE.RepeatWrapping;
-  // scene03floor.repeat.set(8, 8);
+  const scene03floor = useTexture("./scenes/floor03.jpg");
+  scene03floor.wrapS = scene03floor.wrapT = THREE.RepeatWrapping;
+  scene03floor.repeat.set(8, 8);
+
+  const scene04floor = useTexture("./scenes/floor04.jpg");
+  scene04floor.wrapS = scene04floor.wrapT = THREE.RepeatWrapping;
+  scene04floor.repeat.set(6, 4);
+
+  const scene05floor = useTexture("./scenes/floor05.jpg");
+  scene05floor.wrapS = scene05floor.wrapT = THREE.RepeatWrapping;
+  scene05floor.repeat.set(8, 8);
+
+  const scene06floor = useTexture("./scenes/floor06.jpg");
+  scene06floor.wrapS = scene06floor.wrapT = THREE.RepeatWrapping;
+  scene06floor.repeat.set(8, 8);
+
+  const scene07floor = useTexture("./scenes/floor07.jpg");
+  scene07floor.wrapS = scene07floor.wrapT = THREE.RepeatWrapping;
+  scene07floor.repeat.set(8, 8);
 
   const [wallColor, setWallColor] = useState("#fff");
-  const wallColors = ["#8E8B82", "#1B3C59", "#3A4D39", "#A25B5B", "#fff"];
+  const wallColors = [
+    "#8E8B82",
+    "#092635",
+    "#a39184",
+    "#1B4242",
+    "#4E3636",
+    "#4D455D",
+    "#ED7D31",
+    "#fff",
+  ];
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
-
-  const handleClick = () => {
+  const changeWallTextureHandler = () => {
     setCurrentColorIndex((prev) => (prev + 1) % wallColors.length);
     const nextColor = wallColors[currentColorIndex];
     setWallColor(nextColor);
+  };
+
+  const [floorTexture, setFloorTexture] = useState(scene01floor);
+  const floorTextures = [
+    scene01floor,
+    scene02floor,
+    scene03floor,
+    scene04floor,
+    scene05floor,
+    scene06floor,
+    scene07floor,
+  ];
+  const [currentFloorIndex, setCurrentFloorIndex] = useState(0);
+  const changeFloorTextureHandler = () => {
+    setCurrentFloorIndex((prev) => (prev + 1) % floorTextures.length);
+    const nextTexture = floorTextures[currentFloorIndex];
+    setFloorTexture(nextTexture);
   };
 
   return (
@@ -59,7 +100,7 @@ export default function Scene(props) {
             target={[0, 0, 0]}
             castShadow
           />
-          <directionalLight position={[-7, 3, 7]} intensity={1.5} castShadow />
+          <directionalLight position={[-7, 3, 7]} intensity={1} castShadow />
           <directionalLight position={[3, 2, 2]} intensity={0.5} />
           {/* <SpotLight
             position={[-5, 4, 0]}
@@ -73,7 +114,7 @@ export default function Scene(props) {
           /> */}
           <directionalLight
             position={[-20, 1, 10]}
-            intensity={3}
+            intensity={2.2}
             castShadow
             color={"FFE300"}
           />
@@ -93,39 +134,44 @@ export default function Scene(props) {
       )}
       {props.scene === 2 && (
         <>
-          <ambientLight intensity={0.15} />
+          <ambientLight intensity={0.12} />
           <pointLight
             position={[0, 2, 2]}
-            intensity={1}
+            intensity={0.5}
             distance={10}
             target={[0, 0, 0]}
             castShadow
           />
           <pointLight
-            position={[5, 1, 1]}
-            intensity={1}
+            position={[7, 1, -2]}
+            intensity={0.8}
             distance={8}
             target={[0, 0, 0]}
-            color={"#F99417"}
+            color={"#F8DFD4"}
           />
           <pointLight
-            position={[-5, 1, 1]}
-            intensity={1}
+            position={[-7, 1, -1]}
+            intensity={0.7}
             distance={8}
             target={[0, 0, 0]}
-            color={"#F99417"}
+            color={"#FFAD84"}
           />
+
           <SpotLight
             position={[-4, 5.5, 2]}
             angle={Math.PI / 5}
-            penumbra={0.6}
-            intensity={1}
-            distance={10}
-            decay={0.5}
+            penumbra={0.9}
+            intensity={2}
+            distance={11}
+            decay={0.8}
             color="#F5EEC8"
             castShadow
           />
-          <directionalLight position={[-2, 3, -0.5]} intensity={1} castShadow />
+          <directionalLight
+            position={[-2, 3, -0.5]}
+            intensity={0.4}
+            castShadow
+          />
         </>
       )}
       {props.scene === 3 && (
@@ -144,33 +190,24 @@ export default function Scene(props) {
             receiveShadow
             rotation={[0, 0, 0]}
             position={[0, 4, -4]}
-            onClick={handleClick}
+            onClick={changeWallTextureHandler}
           >
             <planeGeometry args={[50, 10]} />
-            {props.scene === 1 && (
-              <meshStandardMaterial color={wallColor} roughness={1} />
-            )}
-            {props.scene === 2 && (
-              <meshStandardMaterial color={"#a39184"} roughness={1} />
-            )}
-            {/* {props.scene === 3 && <meshStandardMaterial map={scene02wall} />} */}
-            {/* {props.scene === 2 && <meshStandardMaterial map={scene03wall} />} */}
+            <meshStandardMaterial color={wallColor} roughness={1} />
           </mesh>
           <mesh
             receiveShadow
             rotation={[-Math.PI / 2, 0, 0]}
             position={[0, -1, 1]}
+            onClick={changeFloorTextureHandler}
           >
             <planeGeometry args={[50, 20]} />
-            {props.scene === 1 && (
-              <meshStandardMaterial
-                map={scene01floor}
-                roughness={0.5}
-                color={"#F3EEEA"}
-              />
-            )}
-            {props.scene === 2 && <meshStandardMaterial map={scene02floor} />}
-            {/* {props.scene === 3 && <meshStandardMaterial map={scene03floor} />} */}
+            <meshStandardMaterial
+              map={floorTexture}
+              roughness={floorTexture === scene05floor ? 0 : 0.5}
+              // color={"#F3EEEA"}
+              metalness={0.5}
+            />
           </mesh>
         </>
       )}
