@@ -3,6 +3,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   Backdrop,
   Environment,
+  Html,
   MeshReflectorMaterial,
   OrbitControls,
   PerspectiveCamera,
@@ -20,6 +21,7 @@ import { K087 } from "./components/sofa/K087";
 import Colors from "./components/UI/Colors";
 import Scene from "./components/Scene";
 import html2canvas from "html2canvas";
+import { Vector3 } from "three";
 
 // const Screenshot = (props) => {
 //   // screenshot
@@ -77,6 +79,45 @@ const Screenshot = (props) => {
 };
 
 export default function Experience(props) {
+  const [currentWallIndex, setcurrentWallIndex] = useState(0);
+  const [currentFloorIndex, setCurrentFloorIndex] = useState(0);
+  const [lerping, setLerping] = useState(false);
+
+  const changeWallTextureHandler = () => {
+    setcurrentWallIndex((prev) => (prev + 1) % 8);
+  };
+
+  const changeFloorTextureHandler = () => {
+    setCurrentFloorIndex((prev) => (prev + 1) % 7);
+  };
+
+  const CameraController = () => {
+    const lerpingHandler = () => {
+      console.log("set lerp!");
+      setLerping(true);
+    };
+
+    const targetPosition = new Vector3(0, 3.5, 11);
+    const threshold = 0.2;
+
+    useFrame(({ camera }, delta) => {
+      if (lerping) {
+        camera.lookAt(0, 0, 0);
+        camera.position.lerp(targetPosition, delta * 3);
+        console.log("lerping!");
+
+        const distance = camera.position.distanceTo(targetPosition);
+
+        if (distance < threshold) {
+          setLerping(false);
+          console.log("end");
+        }
+      }
+    });
+
+    return <></>;
+  };
+
   return (
     <section className={styles.section}>
       <h1 className={styles.title}>カラーシミュレーション</h1>
@@ -124,6 +165,8 @@ export default function Experience(props) {
                   scene={props.scene}
                   baseColor={props.baseColor}
                   cushionColor={props.cushionColor}
+                  currentWallIndex={currentWallIndex}
+                  currentFloorIndex={currentFloorIndex}
                 />
               )}
 
@@ -193,6 +236,7 @@ export default function Experience(props) {
                   />
                 </>
               )}
+              <CameraController />
             </Canvas>
             <div className={styles.information}>
               <p>{props.sofaNo === "01" ? "K012" : "K029"}</p>
@@ -256,9 +300,26 @@ export default function Experience(props) {
                 </ul>
               </div>
             </div>
-            {/* <div className={styles.colorSelector}>
-              <div className={styles.color_btn}></div>
-            </div> */}
+            <div className={styles.envSelector}>
+              <ul className={styles.envSelectorInner}>
+                <li
+                  className={styles.evnSelectorItem}
+                  onClick={changeWallTextureHandler}
+                ></li>
+                <li
+                  className={styles.evnSelectorItem}
+                  onClick={changeFloorTextureHandler}
+                ></li>
+              </ul>
+            </div>
+            <div className={styles.cameraController}>
+              <div
+                className={styles.cameraController_btn}
+                onClick={() => {
+                  setLerping(true);
+                }}
+              ></div>
+            </div>
           </div>
 
           <div className={styles.exportSection}>

@@ -5,7 +5,7 @@ import {
   SpotLight,
   useTexture,
 } from "@react-three/drei";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as THREE from "three";
 import K012 from "./sofa/K012";
 import K029 from "./sofa/K029";
@@ -65,12 +65,11 @@ export default function Scene(props) {
     "#ED7D31",
     "#fff",
   ];
-  const [currentColorIndex, setCurrentColorIndex] = useState(0);
-  const changeWallTextureHandler = () => {
-    setCurrentColorIndex((prev) => (prev + 1) % wallColors.length);
-    const nextColor = wallColors[currentColorIndex];
+
+  useEffect(() => {
+    const nextColor = wallColors[props.currentWallIndex];
     setWallColor(nextColor);
-  };
+  }, [props.currentWallIndex]);
 
   const [floorTexture, setFloorTexture] = useState(scene01floor);
   const floorTextures = [
@@ -82,12 +81,11 @@ export default function Scene(props) {
     scene06floor,
     scene07floor,
   ];
-  const [currentFloorIndex, setCurrentFloorIndex] = useState(0);
-  const changeFloorTextureHandler = () => {
-    setCurrentFloorIndex((prev) => (prev + 1) % floorTextures.length);
-    const nextTexture = floorTextures[currentFloorIndex];
+
+  useEffect(() => {
+    const nextTexture = floorTextures[props.currentFloorIndex];
     setFloorTexture(nextTexture);
-  };
+  }, [props.currentFloorIndex]);
 
   return (
     <>
@@ -186,12 +184,7 @@ export default function Scene(props) {
       )}
       {props.scene !== 5 && props.scene !== 3 && (
         <>
-          <mesh
-            receiveShadow
-            rotation={[0, 0, 0]}
-            position={[0, 4, -4]}
-            onClick={changeWallTextureHandler}
-          >
+          <mesh receiveShadow rotation={[0, 0, 0]} position={[0, 4, -4]}>
             <planeGeometry args={[50, 10]} />
             <meshStandardMaterial color={wallColor} roughness={1} />
           </mesh>
@@ -199,13 +192,11 @@ export default function Scene(props) {
             receiveShadow
             rotation={[-Math.PI / 2, 0, 0]}
             position={[0, -1, 1]}
-            onClick={changeFloorTextureHandler}
           >
             <planeGeometry args={[50, 20]} />
             <meshStandardMaterial
               map={floorTexture}
               roughness={floorTexture === scene05floor ? 0 : 0.5}
-              // color={"#F3EEEA"}
               metalness={0.5}
             />
           </mesh>
